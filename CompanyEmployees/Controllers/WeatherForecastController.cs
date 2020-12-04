@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Repository;
 using Contracts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,18 +14,18 @@ namespace CompanyEmployees.Controllers
     public class WeatherForecastController : ControllerBase
     {
         private ILoggerManager _myLogger;
-        public WeatherForecastController(ILoggerManager logger)
+        private readonly IRepositoryManager _repository;
+        public WeatherForecastController(
+            ILoggerManager logger,
+            IRepositoryManager repository)
         {
             _myLogger = logger;
+            _repository = repository;
         }
 
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            _myLogger.LogInfo("Here is info message from our values controller.");
-            _myLogger.LogDebug("Here is debug message from our values controller.");
-            _myLogger.LogWarn("Here is warn message from our values controller.");
-            _myLogger.LogError("Here is an error message from our values controller.");
 
             return new string[] { "value1", "value2" };
         }

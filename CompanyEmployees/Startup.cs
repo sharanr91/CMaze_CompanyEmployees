@@ -35,7 +35,7 @@ namespace CompanyEmployees
             services.ConfigureLoggerService();
 
             services.ConfigureSqlContext(Configuration);
-
+            services.ConfigureRepositoryManager();
             //new to .net core 3.1
             //adds only controllers as views and pages are not required by web api
             services.AddControllers();
