@@ -22,5 +22,15 @@ namespace Repository
                 .OrderBy(c=>c.Name)
                 .ToList(); 
         }
+
+        public Company GetCompany(Guid companyId, bool trackChanges)
+        {
+            return FindByCondition(c => c.Id.Equals(companyId), trackChanges).SingleOrDefault();
+        }
+
+        public void CreateCompany(Company company)
+        {
+            Create(company);
+        }
     }
 }
